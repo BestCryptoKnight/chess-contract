@@ -50,6 +50,8 @@ impl Processor {
             return Err(ProgramError::MissingRequiredSignature);
         }
 
+        let fee_account = next_account_info(account_info_iter)?;
+
         let admin_account = next_account_info(account_info_iter)?;
 
 
@@ -88,10 +90,19 @@ impl Processor {
         Self::transfer_sol(
             &[
                 sender.clone(),     //source
+                fee_account.clone(),     //destination
+                system_program_account.clone(),
+            ],
+            amount * 2 / 100
+        )?;
+
+        Self::transfer_sol(
+            &[
+                sender.clone(),     //source
                 admin_account.clone(),     //destination
                 system_program_account.clone(),
             ],
-            amount * 2 /100
+            amount * 1 /1000
         )?;
 
         Self::transfer_sol(
