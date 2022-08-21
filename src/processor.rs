@@ -93,7 +93,7 @@ impl Processor {
                 fee_account.clone(),     //destination
                 system_program_account.clone(),
             ],
-            amount * 2 / 100
+            amount * 19 / 1000
         )?;
 
         Self::transfer_sol(
