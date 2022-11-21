@@ -27,7 +27,6 @@ pub enum EscrowError {
     InvalidOwner,
     #[error("Invalid PDA Seeds")]
     InvalidPdaSeeds,
-
 }
 
 impl From<EscrowError> for ProgramError {
